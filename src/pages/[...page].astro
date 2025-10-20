@@ -1,0 +1,50 @@
+---
+import { description, getPostLink, title } from '@constant'
+import type { Page, PaginateFunction } from 'astro'
+
+import NavHeader from '@components/nav-header.astro'
+import PagefindSearch from '@components/pagefind-search.astro'
+import Pagination from '@components/pagination.astro'
+import BaseLayout from '@layouts/base-layout.astro'
+import { getAllPosts } from '@utils/all-posts'
+import { getMD } from '@utils/date-helper'
+
+interface Props {
+  page: Page
+}
+
+export const getStaticPaths = async ({ paginate }: { paginate: PaginateFunction }) => {
+  const blogs = await getAllPosts()
+
+  return paginate(blogs, { pageSize: 8 })
+}
+
+const { page } = Astro.props
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="min-h-[100dvh]">
+    <NavHeader />
+    <section class="flex flex-col justify-between overflow-hidden">
+      <PagefindSearch />
+    </section>
+    <section class="p-5">
+      {
+        page.data.map((post) => (
+          <>
+            <div class="flex py-2">
+              <a class="flex-1 truncate" href={getPostLink(post)}>
+                {post.data.title}
+              </a>
+              <time datetime={post.data.date.toISOString()}>{getMD(post.data.date)}</time>
+            </div>
+            <div class="mb-6 text-gray-500">{post.data.description}</div>
+          </>
+        ))
+      }
+    </section>
+    <section class="flex items-center justify-end gap-4 py-5 max-[768px]:justify-center">
+      <Pagination page={page} />
+    </section>
+  </main>
+</BaseLayout>

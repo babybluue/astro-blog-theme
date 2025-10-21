@@ -6,7 +6,7 @@
   --color-primary-gray: #525252;
   --color-primary-light: #fcfcfcf2;
 
-  --animate-jump: jump 0.5s infinite ease-in-out 0.5s;
+  --animate-jump: jump 0.5s infinite ease-in-out 1s;
 
   @keyframes jump {
     0% {

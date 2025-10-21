@@ -26,9 +26,9 @@ export async function getStaticPaths() {
 const { post, prev, next } = Astro.props
 ---
 
-<BaseLayout 
-  title={post.data.title} 
-  description={post.data.description ?? ''} 
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description ?? ''}
   cover={post.data.cover}
   type="article"
   publishedTime={post.data.date.toISOString()}
@@ -36,10 +36,7 @@ const { post, prev, next } = Astro.props
 >
   <NavHead />
   <main class="flex flex-col justify-between">
-    <div
-      data-pagefind-body
-      class="dark:border-primary-gray flex-1 overflow-x-hidden rounded-lg border-2 border-gray-200 p-5 max-[768px]:p-2"
-    >
+    <div data-pagefind-body class="flex-1 overflow-x-hidden p-5 max-[768px]:p-2">
       <ContentRender post={post} />
     </div>
 

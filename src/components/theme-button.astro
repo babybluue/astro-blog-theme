@@ -1,4 +1,8 @@
-<button id="themeToggle" aria-label="themeToggle" class="cursor-pointer">
+<button
+  id="themeToggle"
+  aria-label="themeToggle"
+  class="hover:bg-primary-gray/20 dark:hover:bg-primary-gray cursor-pointer rounded-full p-2 transition-colors"
+>
   <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       class="sun"
@@ -30,7 +34,7 @@
 
 <script>
   const handleToggleClick = () => {
-    document.body.classList.add('transition-colors', 'duration-300')
+    document.body.classList.add('transition-colors', 'duration-100')
     const element = document.documentElement
     element.classList.toggle('dark')
     const isDark = element.classList.contains('dark')
@@ -38,7 +42,7 @@
   }
 
   document.body.addEventListener('transitionend', () =>
-    document.body.classList.remove('transition-colors', 'duration-300'),
+    document.body.classList.remove('transition-colors', 'duration-100'),
   )
 
   const handleTheme = () => {
@@ -65,11 +69,6 @@
   document.addEventListener('astro:page-load', handleTheme)
 </script>
 <style>
-  #themeToggle {
-    border: 0;
-    background: none;
-  }
-
   path {
     transition: fill 0.2s ease-in-out;
   }

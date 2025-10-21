@@ -2,7 +2,11 @@
 import PagefindSearch from './pagefind-search.astro'
 ---
 
-<button id="searchToggle" aria-label="searchToggle" class="cursor-pointer rounded-md p-2 transition-colors">
+<button
+  id="searchToggle"
+  aria-label="searchToggle"
+  class="hover:bg-primary-gray/20 dark:hover:bg-primary-gray cursor-pointer rounded-full p-2 transition-colors"
+>
   <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       fill-rule="evenodd"
@@ -16,26 +20,27 @@ import PagefindSearch from './pagefind-search.astro'
 <div id="searchModal" class="search-modal fixed inset-0 z-[1000] box-border hidden items-center justify-center p-4">
   <div class="search-modal-overlay absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
   <div
-    class="search-modal-content bg-primary-light dark:bg-primary-dark relative m-auto flex h-[80vh] max-h-[600px] w-full max-w-3xl flex-col overflow-hidden rounded-xl shadow-2xl"
+    class="bg-primary-light dark:bg-primary-dark relative m-auto flex h-[80vh] max-h-[600px] w-full max-w-3xl flex-col overflow-hidden rounded-xl shadow-2xl"
   >
     <div
-      class="search-modal-header border-primary-gray bg-primary-light dark:bg-primary-dark flex shrink-0 items-center justify-between border-b px-6 py-4"
+      class="border-primary-gray bg-primary-light dark:bg-primary-dark flex shrink-0 items-center justify-between px-4 py-2"
     >
-      <h2 class="text-primary-dark dark:text-primary-light m-0 text-xl font-semibold">搜索</h2>
+      <h2 class="m-0 text-xl font-semibold">搜索</h2>
       <button
         id="searchClose"
         aria-label="关闭搜索"
-        class="search-close-btn hover:bg-primary-gray/20 dark:hover:bg-primary-gray/30 rounded-md p-2 transition-colors"
+        class="hover:bg-primary-gray/20 dark:hover:bg-primary-gray cursor-pointer rounded-full p-2 transition-colors"
       >
         <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             fill-rule="evenodd"
+            class="fill-black dark:fill-white"
             d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
           ></path>
         </svg>
       </button>
     </div>
-    <div class="search-modal-body flex flex-1 flex-col overflow-hidden p-6">
+    <div class="flex flex-1 flex-col overflow-hidden">
       <PagefindSearch />
     </div>
   </div>

@@ -100,9 +100,8 @@ body {
   line-height: 24px !important;
 }
 
-main,
-nav,
-.index-list {
+
+main {
   width: 65%;
   margin: auto;
   max-width: 1220px;
@@ -118,9 +117,7 @@ nav,
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-}
 
-main {
   min-height: calc(100dvh - 100px);
   padding: 0 0.625rem;
 

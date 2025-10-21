@@ -4,8 +4,10 @@ import SearchButton from './search-button.astro'
 import ThemeButton from './theme-button.astro'
 ---
 
-<nav class="sticky top-0 flex items-center justify-between">
+<nav class="sticky left-0 top-0 flex w-dvw items-center justify-between">
   <AvatarImage width={50} />
-  <SearchButton />
-  <ThemeButton />
+  <div class="flex items-center gap-5">
+    <SearchButton />
+    <ThemeButton />
+  </div>
 </nav>

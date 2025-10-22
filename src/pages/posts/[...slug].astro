@@ -1,5 +1,5 @@
 ---
-import { linkAttr } from '@constant'
+import { config } from '@constant'
 
 import ContentRender from '@components/content-render.astro'
 import NavHead from '@components/nav-header.astro'
@@ -18,7 +18,7 @@ interface Props {
 export async function getStaticPaths() {
   const posts = await getAllPosts()
   return posts.map((post, index) => ({
-    params: { slug: post.data[linkAttr] },
+    params: { slug: post.data[config.linkAttr] },
     props: { post, prev: posts[index - 1], next: posts[index + 1] },
   }))
 }

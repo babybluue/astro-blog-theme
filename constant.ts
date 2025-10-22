@@ -1,28 +1,19 @@
 import type { PostModel } from './src/interfaces/post-model'
 
-// index
-
-export const site = 'https://astro-blog-ecru-phi.vercel.app'
-
-export const title = 'didmax'
-
-export const description = 'didmax 的个人博客，专注于技术分享与生活记录。基于 Astro 构建，简洁快速，支持深色模式。'
-
-export const tooltip = {
-  content: '检测到页面内容有更新，是否刷新页面',
-  confirm: '是',
-  cancel: '否',
-}
-
-export const linkAttr = 'abbrlink'
-
-// 配置常量
 export const config = {
-  postsPerPage: 12,
-  latestPostsCount: 8,
-  siteName: 'didmax',
-  author: 'didmax',
+  site: 'https://astro-blog-theme.vercel.app/',
+  description:
+    'Astro Blog Theme 是一个基于 Astro 的博客主题，支持 PWA、搜索、深色模式等功能，提供完整的 Markdown 语法支持。',
+  siteName: 'Astro Blog Theme',
+  author: 'Astro Blog Theme',
   language: 'zh-CN',
+
+  tip: '检测到页面内容有更新，是否刷新页面',
+  tip_confirm: '是',
+  tip_cancel: '否',
+
+  postsPerPage: 12,
+  linkAttr: 'abbrlink',
 }
 
-export const getPostLink = (post: PostModel) => `/posts/${post.data[linkAttr]}`
+export const getPostLink = (post: PostModel) => `/posts/${post.data[config.linkAttr]}`

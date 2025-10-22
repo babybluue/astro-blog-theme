@@ -1,5 +1,5 @@
 ---
-import { description, title } from '@constant'
+import { config } from '@constant'
 import type { Page, PaginateFunction } from 'astro'
 
 import NavHeader from '@components/nav-header.astro'
@@ -22,7 +22,7 @@ export const getStaticPaths = async ({ paginate }: { paginate: PaginateFunction 
 const { page } = Astro.props
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={config.siteName} description={config.description}>
   <NavHeader />
   <main class="min-h-dvh">
     <section class="flex flex-col justify-between overflow-hidden">

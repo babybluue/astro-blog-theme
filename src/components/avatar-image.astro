@@ -1,6 +1,8 @@
 ---
-import { avatar, title } from '@constant'
+import { config } from '@constant'
 import { Image } from 'astro:assets'
+
+import avatar from '@images/avatar.png'
 
 interface Props {
   width?: number
@@ -12,7 +14,7 @@ const { width } = Astro.props
 <Image
   src={avatar}
   loading="eager"
-  alt={`Avatar of ${title}`}
+  alt={`Avatar of ${config.siteName}`}
   class="hover:animate-jump my-5 aspect-square cursor-pointer select-none transition-all duration-150 ease-in"
   width={width ?? 100}
 />

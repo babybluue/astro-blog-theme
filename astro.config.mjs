@@ -1,4 +1,4 @@
-import { site } from './constant'
+import { config } from './constant'
 import AstroPWA from '@vite-pwa/astro'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
@@ -20,7 +20,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  site,
+  site: config.site,
   prefetch: { prefetchAll: true },
   markdown: {
     remarkRehype: { footnoteLabel: ' ' },
@@ -60,7 +60,7 @@ export default defineConfig({
   vite: { plugins: [tailwindcss()] },
   integrations: [
     mdx(),
-    sitemap({ filter: (page) => page == `${site}/` || page.includes('/posts') }),
+    sitemap({ filter: (page) => page == `${config.site}/` || page.includes('/posts') }),
     AstroPWA({
       registerType: 'prompt',
       devOptions: { enabled: false },
@@ -69,9 +69,9 @@ export default defineConfig({
 
       includeAssets: ['**/*'],
       manifest: {
-        name: 'astro - blog',
-        short_name: 'astro blog',
-        description: 'a blog theme powered by astro',
+        name: config.siteName,
+        short_name: config.siteName,
+        description: config.description,
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',

@@ -58,7 +58,7 @@ const getArgv = async () => {
 
   const frontMatter = {}
   frontMatter.title = obj['title']
-  if (obj['dir'] == 'drafts') {
+  if (obj['draft']) {
     frontMatter.isDraft = true
   }
   frontMatter.date = new Date()

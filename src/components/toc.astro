@@ -1,4 +1,4 @@
-<div class="nav-area fixed bottom-10 right-5 z-50 hidden">
+<div class="nav-area bottom-15 fixed right-0 z-50 hidden text-gray-500">
   <div class="fast-nav"></div>
   <div class="menu-icon menu-close mt-2 flex cursor-pointer flex-col items-end gap-1">
     <span class="bg-primary-dark dark:bg-primary-light inline-block h-[1.5px] w-[20px]"></span>
@@ -25,6 +25,7 @@
     const anchorLinks = document.querySelectorAll('.icon-link')
     const tocLinks = document.querySelectorAll('.fast-nav .toc-link')
     const navIcon = document.querySelector('.nav-icon')
+    const tocContainer = document.querySelector('.fast-nav .toc') as HTMLElement
 
     if (document.documentElement.scrollHeight !== document.documentElement.clientHeight) {
       navIcon?.classList.remove('hidden')
@@ -34,9 +35,23 @@
       if (tocLinks.length) {
         anchorLinks.forEach((item, index) => {
           const ele = item as HTMLElement
+
           if (window.scrollY >= ele.offsetTop - 150) {
             tocLinks.forEach((item) => item.classList.remove('text-primary'))
             tocLinks[index].classList.add('text-primary')
+
+            if (tocContainer && tocLinks[index]) {
+              const tocLink = tocLinks[index] as HTMLElement
+              const containerRect = tocContainer.getBoundingClientRect()
+              const linkRect = tocLink.getBoundingClientRect()
+
+              const isAboveViewport = linkRect.top < containerRect.top
+              const isBelowViewport = linkRect.bottom > containerRect.bottom
+
+              if (isAboveViewport || isBelowViewport) {
+                tocLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+              }
+            }
           } else {
             tocLinks[index].classList.remove('text-primary')
           }
@@ -110,10 +125,9 @@
 
     .toc {
       width: 100%;
-      padding: 0 1rem;
       padding-top: 0.5rem;
       border-radius: 5px;
-      max-height: 40vh;
+      max-height: 55vh;
       overflow-y: auto;
       &::-webkit-scrollbar-thumb {
         border-width: 6px;

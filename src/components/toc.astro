@@ -1,6 +1,6 @@
 <div class="nav-area bottom-15 fixed right-0 z-50 hidden text-gray-500">
   <div class="fast-nav"></div>
-  <div class="menu-icon menu-close mt-2 flex cursor-pointer flex-col items-end gap-1">
+  <div class="menu-icon my-1 flex cursor-pointer flex-col items-end gap-1">
     <span class="bg-primary-dark dark:bg-primary-light inline-block h-[1.5px] w-[20px]"></span>
     <span class="bg-primary-dark dark:bg-primary-light inline-block h-[1.5px] w-[20px]"></span>
     <span class="bg-primary-dark dark:bg-primary-light inline-block h-[1.5px] w-[20px]"></span>
@@ -25,7 +25,6 @@
     const anchorLinks = document.querySelectorAll('.icon-link')
     const tocLinks = document.querySelectorAll('.fast-nav .toc-link')
     const navIcon = document.querySelector('.nav-icon')
-    const tocContainer = document.querySelector('.fast-nav .toc') as HTMLElement
 
     if (document.documentElement.scrollHeight !== document.documentElement.clientHeight) {
       navIcon?.classList.remove('hidden')
@@ -35,23 +34,9 @@
       if (tocLinks.length) {
         anchorLinks.forEach((item, index) => {
           const ele = item as HTMLElement
-
           if (window.scrollY >= ele.offsetTop - 150) {
             tocLinks.forEach((item) => item.classList.remove('text-primary'))
             tocLinks[index].classList.add('text-primary')
-
-            if (tocContainer && tocLinks[index]) {
-              const tocLink = tocLinks[index] as HTMLElement
-              const containerRect = tocContainer.getBoundingClientRect()
-              const linkRect = tocLink.getBoundingClientRect()
-
-              const isAboveViewport = linkRect.top < containerRect.top
-              const isBelowViewport = linkRect.bottom > containerRect.bottom
-
-              if (isAboveViewport || isBelowViewport) {
-                tocLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-              }
-            }
           } else {
             tocLinks[index].classList.remove('text-primary')
           }
@@ -83,6 +68,7 @@
 
     if (fastNav && tocNav) {
       navArea?.classList.remove('hidden')
+      fastNav.classList.add('hidden')
       fastNav.append(tocNav.cloneNode(true))
     }
 
@@ -119,6 +105,13 @@
     }
   }
   .nav-area {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 0.75rem;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
     @media screen and (max-width: 768px) {
       display: none;
     }
@@ -153,7 +146,15 @@
     }
   }
 
+  .dark .nav-area {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
   .menu-close {
+    padding: 1rem 0 0.5rem;
     span:first-child {
       transform: rotate(45deg);
       transform-origin: 50%;

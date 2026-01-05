@@ -37,6 +37,8 @@ The command will remove the background rect element from the svg file under _src
 
 ```bash
  pnpm run icons
+ # or
+ pnpm run icons --padding # generate icons with padding
 ```
 
 The command will generate icons under _public_ directory, including pwa-48.png, pwa-64.png, pwa-72.png, pwa-96.png, pwa-192.png, pwa-512.png and favicon.svg.

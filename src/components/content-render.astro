@@ -20,7 +20,7 @@ const { Content } = await render(post)
       {post.data.title}
     </h1>
 
-    <div data-pagefind-ignore class="text-right text-xs text-gray-400">
+    <div data-pagefind-ignore class="pr-4 text-right text-xs text-gray-400">
       {
         post.data.tags?.map((tag: string) => (
           <a class="mx-1 my-2 inline-block text-xs no-underline" href={'/tags/' + tag}>

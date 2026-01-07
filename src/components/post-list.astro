@@ -22,7 +22,7 @@ const { posts } = Astro.props
       </div>
       <div class="mb-2 flex items-center">
         {post.data.tags?.map((tag) => (
-          <a class="mr-1 inline-block text-xs text-gray-200 no-underline" href={'/tags/' + tag}>
+          <a class="mr-1 inline-block text-xs text-zinc-400 no-underline" href={'/tags/' + tag}>
             #{tag}
           </a>
         ))}

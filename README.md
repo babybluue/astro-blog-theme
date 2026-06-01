@@ -42,3 +42,7 @@ The command will remove the background rect element from the svg file under _src
 ```
 
 The command will generate icons under _public_ directory, including pwa-48.png, pwa-64.png, pwa-72.png, pwa-96.png, pwa-192.png, pwa-512.png and favicon.svg.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

@@ -62,7 +62,7 @@ export default defineConfig({
     mdx(),
     sitemap({ filter: (page) => page == `${config.site}/` || page.includes('/posts') }),
     AstroPWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       devOptions: { enabled: false },
       workbox: { navigateFallback: '/404', globPatterns: ['**/*'], navigateFallbackDenylist: [/.*\.xml$/, /search/] },
       experimental: { directoryAndTrailingSlashHandler: true },

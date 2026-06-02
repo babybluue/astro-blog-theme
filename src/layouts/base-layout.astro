@@ -1,5 +1,6 @@
 ---
 import BaseHead from '@components/html-head.astro'
+import ReloadPrompt from '@components/reload-prompt.astro'
 
 const {
   title,
@@ -24,5 +25,6 @@ const {
   />
   <body transition:animate="none" class="bg-primary-light text-primary-dark dark:bg-primary-dark dark:text-white">
     <slot />
+    <ReloadPrompt transition:persist />
   </body>
 </html>

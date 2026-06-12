@@ -8,10 +8,6 @@ export const config = {
   author: 'Astro Blog Theme',
   language: 'zh-CN',
 
-  tip: '检测到页面内容有更新，是否刷新页面',
-  tip_confirm: '是',
-  tip_cancel: '否',
-
   postsPerPage: 12,
   linkAttr: 'abbrlink',
 }
